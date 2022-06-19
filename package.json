@@ -23,6 +23,7 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@ember-data/model": "^4.4.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
     "@embroider/compat": "^1.6.0",
@@ -68,6 +69,7 @@
     "qunit": "^2.19.1",
     "qunit-dom": "^2.0.0",
     "tailwindcss": "^3.0.24",
+    "tracked-built-ins": "^3.1.0",
     "webpack": "^5.72.1"
   },
   "engines": {
