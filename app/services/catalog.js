@@ -104,13 +104,15 @@ export default class CatalogService extends Service {
       },
     };
     let url = type === 'band' ? `bands/${record.id}` : `  songs/${record.id}`;
-    await fetch(url, {
+    let response = await fetch(url, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application:vnd.api+json',
       },
       body: JSON.stringify(payload),
     });
+
+    console.log(await response);
   }
 
   add(type, record) {

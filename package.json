@@ -20,6 +20,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "start:api": "ember s --proxy=http://json-api.rockandrollwithemberjs.com",
+    "start:proxy": "ember s --proxy=http://json-api.rockandrollwithemberjs.com Building into /private/var/folders/ps/k_qd0wr9757fxt_9jtvcl4n00000gn/T/embroider/f97f06 Proxying to http://json-api.rockandrollwithemberjs.com",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
