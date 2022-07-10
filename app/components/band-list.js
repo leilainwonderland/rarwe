@@ -8,7 +8,7 @@ export default class BandListComponent extends Component {
     return this.args.bands.map((band) => {
       return {
         band,
-        isActive: this.router.isActive('bands.band', band),
+        isActive: this.router.isActive('bands.band', band.id),
       };
     });
   }

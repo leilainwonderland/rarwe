@@ -2,9 +2,11 @@
 {{yield this.stars}}
 {{else}}
 {{#each this.stars as |star|}}
-<button type="button" {{on "click" (fn @onUpdate star.rating)}}>
+<button type="button" {{on "click" (fn @onUpdate star.rating)}} data-test-rr="star-rating-button">
 
-  <FaIcon @icon="star" @prefix={{if star.full "fas" "far" }} />
+  <FaIcon @icon="star" @prefix={{if star.full "fas" "far" }}
+  data-test-rr={{if star.full "full-star" "empty-star"}}
+   />
 </button>
 {{/each}}
 {{/if}}

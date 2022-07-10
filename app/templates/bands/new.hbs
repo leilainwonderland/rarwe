@@ -4,7 +4,7 @@
   <div class="sm:col-span-4">
     <label for="name" class="block text-sm font-medium leading-5">Name</label>
     <div class="mt-1 relative rounded-md shadow-sm">
-      <input id="name" class="w-full text-gray-800 bg-white border rounded-md py-2 px-4" value={{this.name}}
+      <input id="name" class="w-full text-gray-800 bg-white border rounded-md py-2 px-4" value={{this.name}} data-test-rr="new-band-name"
         {{on "input" this.updateName}} />
     </div>
 
@@ -15,7 +15,7 @@
 
       <div class="flex justify-end">
         <button type="button" class="px-4 py-2 rounded shadow-md hover:shadow-lg
-hover:text-white {{if this.hasNoName " bg-purple-500" "bg-purple-600" }}" disabled={{this.hasNoName}} {{on "click"
+hover:text-white {{if this.hasNoName " bg-purple-500" "bg-purple-600" }}" disabled={{this.hasNoName}} data-test-rr="save-band-button" {{on "click"
           this.saveBand}}>
 
           Save
