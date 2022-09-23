@@ -30,7 +30,7 @@ module('Acceptance | bands', function (hooks) {
       );
   });
   test('Create a band', async function (assert) {
-    this.server.create('band', { namr: 'Royal Blood' });
+    this.server.create('band', { name: 'Royal Blood' });
 
     await visit('/');
     await createBand('Caspian');

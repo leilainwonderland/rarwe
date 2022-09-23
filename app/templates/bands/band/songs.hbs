@@ -1,8 +1,7 @@
-{{ page-title @model.name " song | Rock & Roll with Octane" replace=true }}
-<div class="mb-8 flex">
+{{page-title @model.name ' songs | Rock @ Roll with Octane' replace=true}}
+<div class='mb-8 flex'>
   {{#if this.sortedSongs.length}}
-
-  <span class='relative z-0 inline-flex shadow-sm'>
+    <span class='relative z-0 inline-flex shadow-sm'>
       <LinkTo
         class='rounded-1-md inline-flex items-center px-4 py-2 border border-gray-500 bg-purple-600 leading-5 font-medium text-gray-100 hover:text-white hover:bg-purple-500'
         data-test-rr='sort-by-title-asc'
@@ -37,62 +36,81 @@
       </LinkTo>
     </span>
   {{/if}}
-  <div class="relative ml-auto rounded-md shadow-sm">
-    <label for="search-box" class="sr-only">Search</label>
+  <div class='relative ml-auto rounded-md shadow-sm'>
+    <label for='search-box' class='sr-only'>Search</label>
     <input
-    class="border rounded-md py-2 px-3 blobk w-full pr-10 text-gray-800 sm:text-sm sm:leading-5"
-    id="search-box"
-    data-test-rr="search-box"
-    value={{this.searchTerm}}
-    {{on "input" this.updateSearchTrem}}
+      class='border rounded-md py-2 px-3 block w-full pr-10 text-gray-800 sm:text-sm sm:leading-5'
+      id='search-box'
+      data-test-rr='search-box'
+      value={{this.searchTerm}}
+      {{on 'input' this.updateSearchTerm}}
     />
-    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-    <FaIcon
-    class="h-5 w-5 text-gray-400"
-    @icon="search"
-    @prefix="fas"
-    />
+    <div
+      class='absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none'
+    >
+      <FaIcon class='h-5 w-5 text-gray-400' @icon='search' @prefix='fas' />
+    </div>
   </div>
 </div>
-</div>
 {{#if this.sortedSongs.length}}
-<ul>
-  {{#each this.sortedSongs as |song|}}
-  <li class="mb-2" data-test-rr="song-list-item">
-    {{song.title}}
-    <span class="float-right">
-      <StarRating @rating={{song.rating}} @onUpdate={{fn this.upDateRating song}} />
-    </span>
-  </li>
-  {{/each}}
-</ul>
+  <ul>
+    {{#each this.sortedSongs as |song|}}
+      <li class='mb-2' data-test-rr='song-list-item'>
+        {{capitalize song.title}}
+        <span class='float-right'>
+          <StarRating
+            @rating={{song.rating}}
+            @onUpdate={{fn this.updateRating song}}
+          />
+        </span>
+      </li>
+    {{/each}}
+  </ul>
 {{else}}
-<p class="text-center" data-test-rr="no-songs-text">
-  The band has no songs yet.
-</p>
+  <p class='text-center' data-test-rr='no-songs-text'>
+    The band has no songs yet.
+  </p>
 {{/if}}
-
-
 {{#if this.showAddSong}}
-<div class="flex justify-center mt-2">
-  <button type="button" class="px-4 py-2 rounded bg-purple-600 shadow-md hover:shadow-lg
-hover:text-white hover:bg-purple-500 focus:outline-none" {{on "click" (set this "showAddSong" false)}}>
-    Add song
-  </button>
-</div>
+  <div class='flex justify-center mt2'>
+    <button
+      type='button'
+      class='px-4 py-2 rounded bg-purple-600 shadow-md hover:shadow-lg hover:text-white hover:bg-purple-500 focus:outline-none'
+      data-test-rr='new-song-button'
+      {{on 'click' (set this 'showAddSong' false)}}
+    >
+      Add song
+    </button>
+  </div>
 {{else}}
-<div class="mt-6 flex">
-  <label for="title" class="sr-only">Title</label>
-  <input type="text" name="title" id="title" class="text-gray-800 bg-white rounded-md py-2 px-4" placeholder="Title"
-    value={{this.title}} data-test-rr="new-song-title" {{on "input" this.updateTitle}}>
-  <button type="button" class="ml-4 px-4 py-2 rounded bg-purple-600 shadow-md
-hover:shadow-lg hover:text-white" disabled={{this.hashNoTitle}} {{on "click" this.saveSong}}>
-    Save
-  </button>
-  <button type="button"
-    class="ml-2 px-4 p-2 rounded bg-white border border-bg-purple-600 shadow-md text-purple-600 hover:shadow-lg"
-    {{on "click" this.cancel}}>
-    Cancel
-  </button>
-</div>
+  <div class='mt-6 flex'>
+    <label for='title' class='sr-only'>Title</label>
+    <input
+      type='text'
+      id='title'
+      class='text-gray-800 bg-white rounded-md py-2 px-4'
+      placeholder={{this.newSongPlaceholder}}
+      value={{this.title}}
+      data-test-rr='new-song-title'
+      {{on 'input' this.updateTitle}}
+    />
+    <button
+      type='button'
+      class='ml-4 px-4 py-2 rounded shadow-md hover:shadow-lg hover:text-white
+        {{if this.hasNoTitle "bg-purple-500" "bg-purple-600"}}'
+      data-test-rr='save-song-button'
+      {{on 'click' this.saveSong}}
+      disabled={{this.hasNoTitle}}
+    >
+      Save
+    </button>
+    <button
+      type='button'
+      class='ml-2 px-4 p-2 rounded bg-white border border-bg-purple-600 shadow-md text-purple-600 hover:shadow-lg'
+      {{on 'click' this.cancel}}
+    >
+      Cancel
+    </button>
+  </div>
+
 {{/if}}

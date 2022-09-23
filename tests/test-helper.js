@@ -1,6 +1,7 @@
 import Application from 'rarwe/app';
 import config from 'rarwe/config/environment';
-import * as QUnit from 'qunit';
+import QUnit from 'qunit';
+// import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
 import { start } from 'ember-qunit';
