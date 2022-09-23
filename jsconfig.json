@@ -1,0 +1,14 @@
+{ 
+  "compileOnSave": true,
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "node_modules",
+    "static",
+    "lib"
+  ],
+  "include": [
+    "app/**/*.js"
+  ]
+}
